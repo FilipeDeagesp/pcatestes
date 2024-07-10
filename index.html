@@ -22,6 +22,30 @@
         <section id="content">
             <h2>Bem-vindo ao Sistema de Planejamento e Gestão de PCAs</h2>
             <p>Utilize o menu acima para navegar pelo sistema.</p>
+
+            <section id="cadastro-pca" style="display:none;">
+                <h2>Cadastrar PCA</h2>
+                <form id="pca-form">
+                    <label for="nome">Nome do PCA:</label>
+                    <input type="text" id="nome" name="nome" required>
+                    <label for="descricao">Descrição:</label>
+                    <textarea id="descricao" name="descricao" required></textarea>
+                    <label for="data">Data:</label>
+                    <input type="date" id="data" name="data" required>
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </section>
+
+            <section id="consulta-pca" style="display:none;">
+                <h2>Consultar PCAs</h2>
+                <div id="pca-list"></div>
+            </section>
+
+            <section id="relatorios" style="display:none;">
+                <h2>Relatórios</h2>
+                <button id="generate-report">Gerar Relatório</button>
+                <div id="report-output"></div>
+            </section>
         </section>
     </main>
     <footer>
@@ -30,23 +54,3 @@
     <script src="js/main.js"></script>
 </body>
 </html>
-<main>
-    <section id="content">
-        <h2>Bem-vindo ao Sistema de Planejamento e Gestão de PCAs</h2>
-        <p>Utilize o menu acima para navegar pelo sistema.</p>
-
-        <section id="cadastro-pca" style="display:none;">
-            <h2>Cadastrar PCA</h2>
-            <form id="pca-form">
-                <label for="nome">Nome do PCA:</label>
-                <input type="text" id="nome" name="nome" required>
-                <label for="descricao">Descrição:</label>
-                <textarea id="descricao" name="descricao" required></textarea>
-                <label for="data">Data:</label>
-                <input type="date" id="data" name="data" required>
-                <button type="submit">Cadastrar</button>
-            </form>
-        </section>
-    </section>
-</main>
-
