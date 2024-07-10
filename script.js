@@ -1,6 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Sistema de Planejamento e Gestão de PCAs iniciado.');
 
+    const homeLink = document.getElementById('home-link');
+    const cadastroLink = document.getElementById('cadastro-link');
+    const consultaLink = document.getElementById('consulta-link');
+    const relatoriosLink = document.getElementById('relatorios-link');
+
+    const contentSection = document.getElementById('content');
     const cadastroPcaSection = document.getElementById('cadastro-pca');
     const consultaPcaSection = document.getElementById('consulta-pca');
     const relatoriosSection = document.getElementById('relatorios');
@@ -12,8 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let pcaDatabase = [];
 
     // Event listeners para navegação
-    document.getElementById('home-link').addEventListener('click', function() {
-        document.getElementById('content').innerHTML = `
+    homeLink.addEventListener('click', function() {
+        contentSection.innerHTML = `
             <h2>Bem-vindo ao Sistema de Planejamento e Gestão de PCAs</h2>
             <p>Utilize o menu acima para navegar pelo sistema.</p>`;
         cadastroPcaSection.style.display = 'none';
@@ -21,20 +27,23 @@ document.addEventListener('DOMContentLoaded', function() {
         relatoriosSection.style.display = 'none';
     });
 
-    document.getElementById('cadastro-link').addEventListener('click', function() {
+    cadastroLink.addEventListener('click', function() {
+        contentSection.innerHTML = '';
         cadastroPcaSection.style.display = 'block';
         consultaPcaSection.style.display = 'none';
         relatoriosSection.style.display = 'none';
     });
 
-    document.getElementById('consulta-link').addEventListener('click', function() {
+    consultaLink.addEventListener('click', function() {
+        contentSection.innerHTML = '';
         cadastroPcaSection.style.display = 'none';
         consultaPcaSection.style.display = 'block';
         relatoriosSection.style.display = 'none';
         renderPcaList();
     });
 
-    document.getElementById('relatorios-link').addEventListener('click', function() {
+    relatoriosLink.addEventListener('click', function() {
+        contentSection.innerHTML = '';
         cadastroPcaSection.style.display = 'none';
         consultaPcaSection.style.display = 'none';
         relatoriosSection.style.display = 'block';
@@ -55,6 +64,9 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('PCA cadastrado com sucesso!');
         pcaForm.reset();
         cadastroPcaSection.style.display = 'none';
+        contentSection.innerHTML = `
+            <h2>Bem-vindo ao Sistema de Planejamento e Gestão de PCAs</h2>
+            <p>Utilize o menu acima para navegar pelo sistema.</p>`;
     });
 
     // Event listener para geração de relatório
