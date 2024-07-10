@@ -1,70 +1,118 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset básico */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    box-sizing: border-box;
 }
 
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f6fa;
+    color: #2f3640;
+    line-height: 1.6;
+}
+
+/* Estilo do cabeçalho */
 header {
     background-color: #4CAF50;
     color: white;
-    padding: 10px 0;
+    padding: 20px 0;
     text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+header:hover {
+    background-color: #45a049;
+}
+
+/* Estilo do menu de navegação */
+nav {
+    background-color: #333;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 nav ul {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color: #333;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
 }
 
 nav ul li {
-    display: inline;
+    margin: 0 15px;
 }
 
 nav ul li a {
     color: white;
-    padding: 14px 20px;
     text-decoration: none;
-    display: inline-block;
+    padding: 10px 20px;
+    display: block;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 nav ul li a:hover {
-    background-color: #111;
+    background-color: #555;
+    transform: scale(1.1);
 }
 
+/* Estilo principal */
 main {
-    padding: 20px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    position: relative;
 }
+
+section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #4CAF50;
+    margin-top: 8px;
+    border-radius: 2px;
+    transition: width 0.3s;
+}
+
+section h2:hover::after {
+    width: 100px;
+}
+
+/* Estilo dos formulários */
 form {
     background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 form label {
     display: block;
-    margin: 10px 0 5px;
+    margin-bottom: 8px;
+    font-weight: bold;
 }
 
 form input, form textarea, form button {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 12px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+form input:focus, form textarea:focus {
+    border-color: #4CAF50;
 }
 
 form button {
@@ -72,8 +120,74 @@ form button {
     color: white;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 form button:hover {
     background-color: #45a049;
+    transform: scale(1.05);
+}
+
+/* Estilo das listas de PCAs */
+#pca-list, #report-output {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.pca-item {
+    border-bottom: 1px solid #ccc;
+    padding: 20px 0;
+    transition: background-color 0.3s;
+}
+
+.pca-item:last-child {
+    border-bottom: none;
+}
+
+.pca-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* Estilo do rodapé */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+footer:hover {
+    background-color: #555;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media queries para responsividade */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
 }
