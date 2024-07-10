@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let pcaDatabase = [];
 
-    document.querySelector('nav ul li a[href="#"]').addEventListener('click', function() {
+    // Event listeners para navegação
+    document.getElementById('home-link').addEventListener('click', function() {
         document.getElementById('content').innerHTML = `
             <h2>Bem-vindo ao Sistema de Planejamento e Gestão de PCAs</h2>
             <p>Utilize o menu acima para navegar pelo sistema.</p>`;
@@ -20,25 +21,26 @@ document.addEventListener('DOMContentLoaded', function() {
         relatoriosSection.style.display = 'none';
     });
 
-    document.querySelector('nav ul li a[href="#Cadastrar PCA"]').addEventListener('click', function() {
+    document.getElementById('cadastro-link').addEventListener('click', function() {
         cadastroPcaSection.style.display = 'block';
         consultaPcaSection.style.display = 'none';
         relatoriosSection.style.display = 'none';
     });
 
-    document.querySelector('nav ul li a[href="#Consultar PCAs"]').addEventListener('click', function() {
+    document.getElementById('consulta-link').addEventListener('click', function() {
         cadastroPcaSection.style.display = 'none';
         consultaPcaSection.style.display = 'block';
         relatoriosSection.style.display = 'none';
         renderPcaList();
     });
 
-    document.querySelector('nav ul li a[href="#Relatórios"]').addEventListener('click', function() {
+    document.getElementById('relatorios-link').addEventListener('click', function() {
         cadastroPcaSection.style.display = 'none';
         consultaPcaSection.style.display = 'none';
         relatoriosSection.style.display = 'block';
     });
 
+    // Event listener para cadastro de PCA
     pcaForm.addEventListener('submit', function(e) {
         e.preventDefault();
         const nome = document.getElementById('nome').value;
@@ -55,10 +57,12 @@ document.addEventListener('DOMContentLoaded', function() {
         cadastroPcaSection.style.display = 'none';
     });
 
+    // Event listener para geração de relatório
     generateReportButton.addEventListener('click', function() {
         generateReport();
     });
 
+    // Função para renderizar lista de PCAs
     function renderPcaList() {
         pcaList.innerHTML = '';
         if (pcaDatabase.length === 0) {
@@ -78,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Função para gerar relatório de PCAs
     function generateReport() {
         if (pcaDatabase.length === 0) {
             reportOutput.innerHTML = '<p>Nenhum PCA cadastrado.</p>';
