@@ -17,36 +17,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let pcaDatabase = [];
 
+    // Função para alternar a visibilidade das seções
+    function showSection(section) {
+        cadastroPcaSection.style.display = 'none';
+        consultaPcaSection.style.display = 'none';
+        relatoriosSection.style.display = 'none';
+        section.style.display = 'block';
+    }
+
     // Event listeners para navegação
     homeLink.addEventListener('click', function() {
         contentSection.innerHTML = `
             <h2>Bem-vindo ao Sistema de Planejamento e Gestão de PCAs</h2>
             <p>Utilize o menu acima para navegar pelo sistema.</p>`;
-        cadastroPcaSection.style.display = 'none';
-        consultaPcaSection.style.display = 'none';
-        relatoriosSection.style.display = 'none';
+        showSection(contentSection);
     });
 
     cadastroLink.addEventListener('click', function() {
-        contentSection.innerHTML = '';
-        cadastroPcaSection.style.display = 'block';
-        consultaPcaSection.style.display = 'none';
-        relatoriosSection.style.display = 'none';
+        showSection(cadastroPcaSection);
     });
 
     consultaLink.addEventListener('click', function() {
-        contentSection.innerHTML = '';
-        cadastroPcaSection.style.display = 'none';
-        consultaPcaSection.style.display = 'block';
-        relatoriosSection.style.display = 'none';
         renderPcaList();
+        showSection(consultaPcaSection);
     });
 
     relatoriosLink.addEventListener('click', function() {
-        contentSection.innerHTML = '';
-        cadastroPcaSection.style.display = 'none';
-        consultaPcaSection.style.display = 'none';
-        relatoriosSection.style.display = 'block';
+        showSection(relatoriosSection);
     });
 
     // Event listener para cadastro de PCA
@@ -63,10 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         alert('PCA cadastrado com sucesso!');
         pcaForm.reset();
-        cadastroPcaSection.style.display = 'none';
-        contentSection.innerHTML = `
-            <h2>Bem-vindo ao Sistema de Planejamento e Gestão de PCAs</h2>
-            <p>Utilize o menu acima para navegar pelo sistema.</p>`;
+        showSection(contentSection);
     });
 
     // Event listener para geração de relatório
